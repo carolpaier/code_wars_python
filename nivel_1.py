@@ -25,26 +25,25 @@ LABIRINTO = [
     ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', 'S', '#']
 ]
 
-
 def print_labirinto():
     print("")
     for linha in LABIRINTO:
         print("".join(linha))
     print("")
 
-
 def movimento(posicao: tuple, direcao: list):
     LABIRINTO[posicao[0]][posicao[1]] = CAMINHO_PERCORRIDO
     LABIRINTO[posicao[0] + direcao[0]][posicao[1] + direcao[1]] = ROBO
     return [posicao[0] + direcao[0], posicao[1] + direcao[1]]
-    
 
 def verifica_movimento(posicao: tuple, direcao: list) -> bool:
     if LABIRINTO[posicao[0] + direcao[0]][posicao[1] + direcao[1]] == SAIDA:
-        raise print("SUCESSO")
+        LABIRINTO[posicao[0]][posicao[1]] = CAMINHO_PERCORRIDO
+        LABIRINTO[posicao[0] + direcao[0]][posicao[1] + direcao[1]] = ROBO
+        print_labirinto()
+        print("SUCESSO!")
 
-    return (LABIRINTO[posicao[0] + direcao[0]][posicao[1] + direcao[1]] == CAMINHO_LIVRE) 
-
+    return (LABIRINTO[posicao[0] + direcao[0]][posicao[1] + direcao[1]] == CAMINHO_LIVRE)
 
 def main():
     POSICAO_INICIAL = [3, 8]
@@ -55,108 +54,21 @@ def main():
 
     POSICAO_ATUAL = POSICAO_INICIAL
 
-    if verifica_movimento(POSICAO_ATUAL, CIMA):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, CIMA)
-        print_labirinto()
-        sleep(1)
+    for _ in range(20):
+        if _ in [0, 1] and verifica_movimento(POSICAO_ATUAL, CIMA):
+            POSICAO_ATUAL = movimento(POSICAO_ATUAL, CIMA)
+            print_labirinto()
+            sleep(1)
 
-    if verifica_movimento(POSICAO_ATUAL, CIMA):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, CIMA)
-        print_labirinto()
-        sleep(1)
+        elif _ in [2, 3, 4, 5, 6, 7, 8, 9, 12, 13] and verifica_movimento(POSICAO_ATUAL, DIREITA):
+            POSICAO_ATUAL = movimento(POSICAO_ATUAL, DIREITA)
+            print_labirinto()
+            sleep(1)
 
-    if verifica_movimento(POSICAO_ATUAL, DIREITA):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, DIREITA)
-        print_labirinto()
-        sleep(1)   
+        elif _ in [10, 11, 14, 15, 16, 17, 18, 19] and verifica_movimento(POSICAO_ATUAL, BAIXO):
+            POSICAO_ATUAL = movimento(POSICAO_ATUAL, BAIXO)
+            print_labirinto()
+            sleep(1)
 
-    if verifica_movimento(POSICAO_ATUAL, DIREITA):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, DIREITA)
-        print_labirinto()
-        sleep(1)        
-
-    if verifica_movimento(POSICAO_ATUAL, DIREITA):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, DIREITA)
-        print_labirinto()
-        sleep(1)        
-
-    if verifica_movimento(POSICAO_ATUAL, DIREITA):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, DIREITA)
-        print_labirinto()
-        sleep(1)        
-
-    if verifica_movimento(POSICAO_ATUAL, DIREITA):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, DIREITA)
-        print_labirinto()
-        sleep(1)        
-
-    if verifica_movimento(POSICAO_ATUAL, DIREITA):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, DIREITA)
-        print_labirinto()
-        sleep(1)        
-
-    if verifica_movimento(POSICAO_ATUAL, DIREITA):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, DIREITA)
-        print_labirinto()
-        sleep(1)        
-
-    if verifica_movimento(POSICAO_ATUAL, DIREITA):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, DIREITA)
-        print_labirinto()
-        sleep(1)        
-
-    if verifica_movimento(POSICAO_ATUAL, BAIXO):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, BAIXO)
-        print_labirinto()
-        sleep(1)   
-
-    if verifica_movimento(POSICAO_ATUAL, BAIXO):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, BAIXO)
-        print_labirinto()
-        sleep(1)        
-
-    if verifica_movimento(POSICAO_ATUAL, DIREITA):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, DIREITA)
-        print_labirinto()
-        sleep(1)        
-
-    if verifica_movimento(POSICAO_ATUAL, DIREITA):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, DIREITA)
-        print_labirinto()
-        sleep(1)    
-
-    if verifica_movimento(POSICAO_ATUAL, BAIXO):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, BAIXO)
-        print_labirinto()
-        sleep(1)   
-
-    if verifica_movimento(POSICAO_ATUAL, BAIXO):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, BAIXO)
-        print_labirinto()
-        sleep(1)        
-
-    if verifica_movimento(POSICAO_ATUAL, BAIXO):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, BAIXO)
-        print_labirinto()
-        sleep(1)   
-
-    if verifica_movimento(POSICAO_ATUAL, BAIXO):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, BAIXO)
-        print_labirinto()
-        sleep(1)        
-
-    if verifica_movimento(POSICAO_ATUAL, BAIXO):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, BAIXO)
-        print_labirinto()
-        sleep(1)   
-
-    if verifica_movimento(POSICAO_ATUAL, BAIXO):
-        POSICAO_ATUAL = movimento(POSICAO_ATUAL, BAIXO)
-        print_labirinto()
-        sleep(1)       
-        
-
-     
 if __name__ == "__main__":
     main()
-
