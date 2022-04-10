@@ -89,3 +89,6 @@ com o uso da pilha e com a marcação do valor 2 na matriz.ção da pilha pode s
 removidos do seu final. Cada elemento deverá representar uma posição da matriz, com valor para
 linha e coluna, representando as posições que o robô já visitou (mas sem a sua posição atual).
 
+<div align="center">
+    <img src=imagem_2.png>
+</div>
