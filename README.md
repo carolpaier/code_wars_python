@@ -90,5 +90,5 @@ removidos do seu final. Cada elemento deverá representar uma posição da matri
 linha e coluna, representando as posições que o robô já visitou (mas sem a sua posição atual).
 
 <div align="center">
-    <img src=imagem_2.png>
+    <img src=imagem2.png>
 </div>
