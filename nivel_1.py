@@ -3,8 +3,8 @@ from time import sleep
 
 PAREDE = '#'
 CAMINHO_LIVRE = ' '
-CAMINHO_PERCORRIDO = "2"
-ROBO = "4"
+CAMINHO_PERCORRIDO = "."
+ROBO = "X"
 SAIDA = "S"
 
 ESQUERDA = [0, -1]
@@ -13,16 +13,16 @@ CIMA     = [-1, 0]
 BAIXO    = [1, 0]
 
 LABIRINTO = [
-    ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'], 
-    ['#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'], 
-    ['#', ' ', '#', '#', '#', '#', '#', '#', ' ', '#', '#', '#', '#', '#', ' ', '#', ' ', '#', '#', '#'], 
-    ['#', '#', '#', '#', '#', '#', ' ', ' ', '4', ' ', ' ', ' ', '#', '#', '#', '#', ' ', ' ', ' ', '#'], 
-    ['#', ' ', ' ', ' ', ' ', ' ', ' ', '#', ' ', '#', '#', ' ', ' ', ' ', ' ', '#', '#', '#', ' ', '#'], 
-    ['#', '#', '#', '#', '#', ' ', '#', '#', ' ', ' ', '#', '#', ' ', '#', ' ', ' ', ' ', '#', ' ', '#'], 
+    ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'],
+    ['#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ', ' ', ' ' , ' ', '#'],
+    ['#', ' ', '#', '#', '#', '#', '#', '#', ' ', '#', '#', '#', '#', '#', ' ', '#', ' ', '#', '#', '#'],
+    ['#', '#', '#', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', '#', '#', '#', '#', ' ', ' ', ' ', '#'], 
+    ['#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '#', ' ', ' ', ' ', ' ', '#', '#', '#', ' ', '#'], 
+    ['#', '#', '#', '#', ' ', ' ', '#', '#', ' ', ' ', '#', '#', ' ', '#', ' ', ' ', ' ', '#', ' ', '#'], 
     ['#', '#', ' ', ' ', ' ', ' ', '#', '#', ' ', '#', '#', ' ', ' ', '#', '#', ' ', '#', '#', ' ', '#'], 
-    ['#', ' ', ' ', '#', ' ', '#', '#', '#', ' ', '#', '#', ' ', '#', '#', ' ', ' ', '#', '#', ' ', '#'], 
-    ['#', '#', ' ', '#', ' ', '#', ' ', ' ', ' ', ' ', '#', ' ', ' ', '#', ' ', '#', '#', ' ', ' ', '#'], 
-    ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', 'S', '#']
+    ['#', ' ', ' ', '#', ' ', '#', '#', '#', ' ', '#', '#', ' ', ' ', '#', ' ', ' ', '#', '#', ' ', '#'], 
+    ['#', '#', ' ', '#', ' ', ' ', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'], 
+    ['#', '#', '#', '#', '#', '#', '#', '#', 'X', '#', '#', '#', '#', '#', '#', '#', '#', '#','S' , '#'],
 ]
 
 def print_labirinto():
@@ -46,7 +46,7 @@ def verifica_movimento(posicao: tuple, direcao: list) -> bool:
     return (LABIRINTO[posicao[0] + direcao[0]][posicao[1] + direcao[1]] == CAMINHO_LIVRE)
 
 def main():
-    POSICAO_INICIAL = [3, 8]
+    POSICAO_INICIAL = [9, 8]
 
     LABIRINTO[POSICAO_INICIAL[0]][POSICAO_INICIAL[1]] = ROBO
 
@@ -54,18 +54,23 @@ def main():
 
     POSICAO_ATUAL = POSICAO_INICIAL
 
-    for _ in range(20):
-        if _ in [0, 1] and verifica_movimento(POSICAO_ATUAL, CIMA):
+    for _ in range(34):
+        if _ in [0,5,6,7,8,13,14,15] and verifica_movimento(POSICAO_ATUAL, CIMA):
             POSICAO_ATUAL = movimento(POSICAO_ATUAL, CIMA)
             print_labirinto()
             sleep(1)
 
-        elif _ in [2, 3, 4, 5, 6, 7, 8, 9, 12, 13] and verifica_movimento(POSICAO_ATUAL, DIREITA):
+        elif _ in [ 1,2,3,4] and verifica_movimento(POSICAO_ATUAL, ESQUERDA):
+            POSICAO_ATUAL = movimento(POSICAO_ATUAL, ESQUERDA)
+            print_labirinto()
+            sleep(1)
+
+        elif _ in [ 9,10,11,12,16,17,18,19,20,21,22,23,26,27] and verifica_movimento(POSICAO_ATUAL, DIREITA):
             POSICAO_ATUAL = movimento(POSICAO_ATUAL, DIREITA)
             print_labirinto()
             sleep(1)
 
-        elif _ in [10, 11, 14, 15, 16, 17, 18, 19] and verifica_movimento(POSICAO_ATUAL, BAIXO):
+        elif _ in [24,25,28,29,30,31,32,33,34] and verifica_movimento(POSICAO_ATUAL, BAIXO):
             POSICAO_ATUAL = movimento(POSICAO_ATUAL, BAIXO)
             print_labirinto()
             sleep(1)
